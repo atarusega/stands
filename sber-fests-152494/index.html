@@ -57,7 +57,7 @@ body.hide-ui #panel, body.hide-ui #toolbar, body.hide-ui #fps { display:none; }
   <div id="loadtext">Загрузка модели…</div>
 </div>
 <script>
-// Модель внутри HTML лежит частями (<script>__M.push(…);__p(k,n,мб)</script>): браузер выполняет их по мере
+// Модель внутри HTML лежит частями (теги script с __M.push и __p): браузер выполняет их по мере
 // скачивания файла — полоса идёт вместе с реальной загрузкой, а не прыгает в конец. Загрузка — 0…85 %.
 window.__M = [];
 window.__p = function (i, n, mb) {
