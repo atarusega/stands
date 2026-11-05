@@ -124,6 +124,11 @@ body.hide-ui #brand, body.hide-ui #links, body.hide-ui #dock, body.hide-ui #fps,
 
 #loader { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; background:#101114; z-index:20; transition:opacity .5s; }
 #loader.hide { opacity:0; pointer-events:none; }
+/* знак крутится вокруг центра, пока грузится модель (Никита 05.11); внутренние круги смещены — видно движение */
+#loader .spin { animation:logo-spin 2.4s linear infinite; }
+#loader.hide .spin { animation-play-state:paused; }
+@keyframes logo-spin { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion:reduce) { #loader .spin { animation:none; } }
 #loader .ttl { font-size:14px; letter-spacing:.02em; text-align:center; padding:0 24px; }
 #loader .track { width:min(360px,70vw); height:4px; background:rgba(255,255,255,.1); border-radius:2px; overflow:hidden; }
 #bar { height:100%; width:0; background:var(--blue); transition:width .2s; }
@@ -197,7 +202,7 @@ body.hide-ui #brand, body.hide-ui #links, body.hide-ui #dock, body.hide-ui #fps,
 <canvas id="scene"></canvas>
 
 <div id="loader">
-  <svg width="56" height="56" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="100" fill="#F2642A"/><circle cx="108" cy="106" r="84" fill="#9FE3D4"/><circle cx="116" cy="113" r="67" fill="#3A3ED8"/><circle cx="128" cy="122" r="42" fill="#D9BDF2"/><circle cx="134" cy="127" r="24" fill="#F2B31A"/></svg>
+  <svg class="spin" width="56" height="56" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="100" fill="#F2642A"/><circle cx="108" cy="106" r="84" fill="#9FE3D4"/><circle cx="116" cy="113" r="67" fill="#3A3ED8"/><circle cx="128" cy="122" r="42" fill="#D9BDF2"/><circle cx="134" cy="127" r="24" fill="#F2B31A"/></svg>
   <div class="ttl">Яндекс UMO х ТЦ х МТМ 05-11 вариант 1</div>
   <div class="track"><div id="bar"></div></div>
   <div id="loadtext">Загрузка модели…</div>
